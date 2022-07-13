@@ -1,10 +1,14 @@
-const mysql = require("mysql2")
+const mariadb = require("mariadb")
 
-const db = mysql.createConnection({
-    user: "test",
-    password: "test_pass",
-    host: "localhost",
-    database: "test_db"
+var pool = mariadb.createPool({
+    host: "localhost", 
+    port: 3306,
+    user: "root", 
+    password: "Password123!"
 });
 
-console.log(db)
+(async () => {
+    const db = await pool.getConnection();
+    const result = await db.query("CREATE DATABASE db_teste;");
+    console.log(result)
+})()
