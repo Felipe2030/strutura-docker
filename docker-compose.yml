@@ -1,14 +1,9 @@
 version: '2'
 services:
-  mysql:
-    image: mysql:latest
+  mariadb:
+    container_name: mdb
+    image: mariadb:latest
     ports:
       - "3306:3306"
-    volumes:
-      - /var/lib/mysql:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test_db
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test_pass
-      MYSQL_ROOT_HOST: '%'
+      - MARIADB_ROOT_PASSWORD=Password123!
